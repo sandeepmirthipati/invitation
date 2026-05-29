@@ -444,7 +444,7 @@ section {
     min-height: 100vh;
     background: linear-gradient(180deg, var(--bg-light-ivory) 0%, var(--bg-champagne) 100%);
     text-align: center;
-    padding-top: 6rem;
+    padding-top: 3rem;
     padding-bottom: 3rem;
     display: flex;
     flex-direction: column;
@@ -452,19 +452,17 @@ section {
     align-items: center;
     position: relative;
 }
-.ganesha-blessing{
+.ganesha-blessing {
     font-family: var(--font-serif);
-    font-size: 3.5rem;
-    letter-spacing: 3.5px;
-    text-transform: uppercase;
+    font-size: 1.0rem;
+    font-weight: 500;
+    letter-spacing: 5px;
     color: var(--color-gold);
-    margin-bottom: 1.8rem;
-    opacity: 1;
     text-align: center;
-    text-shadow: 0 0 18px rgba(194, 157, 83, 0.15);
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 15px rgba(194, 157, 83, 0.15);
+    opacity: 1;
 }
-
-
 
 .hero-vignette {
     position: absolute;
@@ -479,11 +477,11 @@ section {
 
 .hero-monogram {
     font-family: var(--font-decor);
-    font-size: 1.4rem;
+    font-size: 2.8rem;
     font-weight: 700;
     letter-spacing: 12px;
     color: var(--color-gold);
-    margin-bottom: 2rem;
+    margin-bottom: 0.8rem;
     display: block;
 }
 
@@ -493,22 +491,24 @@ section {
     font-size: 2rem;
     font-weight: 400;
     color: var(--text-muted-dark);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.0rem;
     letter-spacing: 3px;
 }
 
 .couple-names-wrap {
-    margin: 2rem 0;
+    margin: 0.5rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    letter-spacing: 6px;
+    
 }
 
 .couple-name {
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 7vw, 5.2rem);
-    font-weight: 400;
-    letter-spacing: 6px;
+    font-size: clamp(1.5rem, 7vw, 5.2rem);
+    font-weight: 500;
+    letter-spacing: 8px;
     background: linear-gradient(180deg, var(--text-dark) 0%, var(--text-muted-dark) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -521,7 +521,7 @@ section {
     background: var(--color-gold-foil);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    line-height: 0.8;
+    line-height: 1.0;
     margin: 0.8rem 0;
 }
 
@@ -530,7 +530,7 @@ section {
     align-items: center;
     justify-content: center;
     width: 300px;
-    margin: 2.5rem auto;
+    margin: 1.2rem auto;
 }
 
 .luxury-divider::before,
@@ -569,7 +569,7 @@ section {
     letter-spacing: 9px;
     text-transform: uppercase;
     color: var(--text-muted-dark);
-    margin-bottom: 1.8rem;
+    margin-bottom: 0.8rem;
 }
 
 .hero-date {
@@ -623,24 +623,25 @@ section {
     text-align: center;
     border-top: 1px solid var(--border-gold-soft);
     border-bottom: 1px solid var(--border-gold-soft);
-    padding: 9rem 2rem;
+    padding: 4rem 1rem;
 }
 
 .quote-decor {
-    font-size: 2.2rem;
+    font-size: 4.2rem;
     background: var(--color-gold-foil);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 2rem;
+    margin-bottom: 0.8rem;
 }
 
 .quote-telugu {
     font-family: var(--font-serif);
     font-size: 1.9rem;
+    letter-spacing: 3px;
     color: var(--text-dark);
-    max-width: 850px;
-    margin: 0 auto 2.2rem auto;
-    line-height: 2.6rem;
+    max-width: 950px;
+    margin: 0 auto 1.2rem auto;
+    line-height: 3rem;
     font-weight: 500;
 }
 
@@ -648,19 +649,35 @@ section {
     font-family: var(--font-body);
     font-weight: 300;
     font-style: italic;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: var(--text-muted-dark);
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
     letter-spacing: 3px;
+    
 }
 
 /* 4. Couple Photo Section with Portrait Showcase Frame */
 .couple-section {
     background: linear-gradient(to bottom, var(--bg-light-ivory) 0%, var(--bg-champagne) 100%);
     perspective: 1200px;
-    padding-top: 12rem;
-    padding-bottom: 12rem;
+    padding-top: 4rem;
+    padding-bottom: 10rem;
+}
+.section-title{
+    font-family: var(--font-heading);
+    font-size: 2.6rem;
+    font-weight: 600;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2rem;
+
+    background: var(--color-gold-foil);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow: 0 0 12px rgba(194,157,83,0.15);
 }
 
 .photo-wrapper-card {
@@ -767,17 +784,17 @@ section {
     font-size: 1.15rem;
     color: var(--text-muted-dark);
     text-align: center;
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
 }
 
 /* Centerpiece invitation box containing parent names */
 .invitation-box-card {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto 5rem auto;
     background: rgba(250, 246, 238, 0.45);
     border: 1px solid var(--color-gold);
     border-radius: 12px;
-    padding: 4.5rem 3.5rem;
+    padding: 2.5rem 3.5rem;
     text-align: center;
     position: relative;
     box-shadow: var(--shadow-luxury);
@@ -816,19 +833,19 @@ section {
 
 .box-decor {
     font-family: var(--font-decor);
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     color: var(--color-gold);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .box-subtitle {
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: 0.85rem;
+    font-size: 1.0rem;
     letter-spacing: 6px;
     text-transform: uppercase;
     color: var(--text-muted-dark);
-    margin-bottom: 2.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .box-names-row {
@@ -879,7 +896,7 @@ section {
     color: var(--text-dark);
     line-height: 2.1rem;
     border-top: 1px solid var(--border-gold-soft);
-    padding-top: 2rem;
+    padding-top: 1.5rem;
 }
 
 /* NEW: Celebration Details Cinematic Block Layout */
@@ -1574,69 +1591,6 @@ section {
         opacity: 0;
     }
 }
-
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-        radial-gradient(circle at top left,
-        rgba(194,157,83,0.05),
-        transparent 30%),
-
-        radial-gradient(circle at bottom right,
-        rgba(205,139,119,0.06),
-        transparent 35%);
-        
-    pointer-events: none;
-    z-index: 0;
-}
-.hero-section::before {
-    content: '';
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle,
-        rgba(194,157,83,0.10),
-        transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    filter: blur(80px);
-    z-index: 1;
-    pointer-events: none;
-}
-.wax-seal {
-    animation:
-        fade-up 1.2s ease 1.2s forwards,
-        pulse-seal 4s ease-in-out infinite;
-}
-
-@keyframes pulse-seal {
-    0%,100% {
-        box-shadow:
-        0 12px 30px rgba(117,20,5,0.4);
-    }
-
-    50% {
-        box-shadow:
-        0 18px 45px rgba(117,20,5,0.65);
-    }
-}
-body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-    url('https://www.transparenttextures.com/patterns/asfalt-light.png');
-
-    opacity: 0.025;
-    pointer-events: none;
-    z-index: 9999;
-}/* =========================
-   FINAL CINEMATIC LUXURY UPGRADE
-========================= */
-
 /* Global Cinematic Background */
 body::before {
     content: '';
@@ -1654,20 +1608,6 @@ body::before {
     pointer-events: none;
     z-index: 0;
 }
-
-/* Film Grain Texture */
-body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-    url('https://www.transparenttextures.com/patterns/asfalt-light.png');
-
-    opacity: 0.025;
-    pointer-events: none;
-    z-index: 9999;
-}
-
 /* Hero Cinematic Glow */
 .hero-section::before {
     content: '';
@@ -1683,6 +1623,19 @@ body::after {
     filter: blur(80px);
     z-index: 1;
     pointer-events: none;
+}
+
+/* Film Grain Texture */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+    url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 9999;
 }
 
 /* Premium Text Glow */
@@ -1712,7 +1665,7 @@ body::after {
     color: var(--text-muted-dark);
     letter-spacing: 2px;
     margin-top: -1rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.25rem;
     opacity: 0.85;
 }
 
@@ -1785,7 +1738,7 @@ body::after {
 
 .gold-particles span:nth-child(6){
     left:80%;
-    animation-duration:17s;
+    animation-duration:10s;
 }
 
 @keyframes floatingParticles {
@@ -1944,20 +1897,4 @@ section {
 }
 
 /* Ganesha Blessing Styles */
-.ganesha-blessing {
-    font-family: var(--font-serif);
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 5px;
-    color: var(--color-gold);
-    text-align: center;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 15px rgba(194, 157, 83, 0.15);
-}
 
-.envelope-inner .ganesha-blessing {
-    opacity: 0;
-    transform: translateY(15px);
-    animation: fade-up 1.2s ease 0.4s forwards;
-    margin-bottom: 1.5rem;
-}
