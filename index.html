@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="You are cordially invited to the Engagement Ceremony of Vishnupriya and Abhiram. Join us in celebrating our love.">
+    <title>Engagement Invitation: Vishnupriya & Abhiram</title>
+    
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <!-- Premium Custom Mouse Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-glow"></div>
+
+    <!-- Cinematic Ambient Light Leak Background -->
+    <div class="light-leak"></div>
+
+    <!-- Background Music Element -->
+    <audio id="bg-music" src="assets/song.mp3" loop></audio>
+    <button id="music-toggle" class="music-toggle" aria-label="Toggle Background Music">
+        <i class="fa-solid fa-volume-xmark"></i>
+    </button>
+
+    <!-- 1. Opening Invitation Screen (Envelope Style with Dual Split Panels) -->
+    <div class="opening-screen" id="opening-screen">
+        <div class="opening-panel left"></div>
+        <div class="opening-panel right"></div>
+        <div class="envelope-container-fixed" id="envelope-card">
+            <div class="envelope-inner">
+                <div class="envelope-border-lines"></div>
+                <div class="corner-ornament top-left"></div>
+                <div class="corner-ornament top-right"></div>
+                <div class="corner-ornament bottom-left"></div>
+                <div class="corner-ornament bottom-right"></div>
+                <div class="divine-blessing">శ్రీ వేంకటేశాయ నమః</div>
+                <div class="envelope-monogram">V & A</div>
+                <div class="envelope-greeting">You Are Cordially Invited</div>
+                <div class="envelope-title">Engagement Ceremony</div>
+                
+                <!-- Wax Seal Opening Button -->
+                <div class="wax-seal" id="open-invitation-btn" role="button" aria-label="Open Invitation">
+                    <div class="wax-seal-logo">VA</div>
+                    <div class="wax-seal-text">Open</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Invitation Content (Initially hidden/blurred until envelope is opened) -->
+    <div class="invitation-content">
+        
+        <!-- 2. Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-vignette"></div>
+            <!-- Flower petals -->
+            <div class="flower-petals">
+            <span class="petal p1"></span>
+            <span class="petal p2"></span>
+            <span class="petal p3"></span>
+            <span class="petal p4"></span>
+            <span class="petal p5"></span>
+            <span class="petal p6"></span>
+            <span class="petal p7"></span>
+            <span class="petal p8"></span>
+            <span class="petal p9"></span>
+            <span class="petal p10"></span>
+            <span class="petal p11"></span>
+            <span class="petal p12"></span>
+            </div>
+            <div class="gold-particles">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- Canvas for Floating Gold Particles -->
+            <canvas class="particle-canvas"></canvas>
+            <div class="light-rays"></div>
+            <div class="container">
+                <div class="ganesha-blessing"> శ్రీ మహాగణాధిపతయే నమః</div>
+                <span class="hero-monogram">V • A</span>
+                <h1 class="hero-title-invite">The Engagement Invitation</h1>
+                
+                <div class="couple-names-wrap">
+                    <span class="couple-name">Vishnupriya</span>
+                    <span class="ampersand">&</span>
+                    <span class="couple-name">Abhiram</span>
+                </div>
+                
+                <div class="luxury-divider">
+                    <div class="luxury-divider-center"></div>
+                </div>
+                
+                <p class="hero-subtitle">Together with their Families Invite You</p>
+                <div class="hero-date">June 26, 2026 • 10:30 AM</div>
+                <p class="hero-poetic-line">Two souls • One timeless journey</p>
+                <a href="#details" class="btn-luxury">Explore Event</a>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- 3. Love Quote Section -->
+        <section class="quote-section">
+            <div class="container">
+                <div class="quote-decor">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <p class="quote-telugu">"స్నేహాల సమక్షంలో, బంధాల బంధుత్వంతో... నూతన అధ్యాయానికి శ్రీకారం చుడుతూ ఒకటవుతున్న మా అడుగులు."</p>
+                <p class="quote-english">"Two souls with but a single thought, two hearts that beat as one."</p>
+            </div>
+        </section>
+
+        <!-- 4. Couple Portrait Section -->
+        <section class="couple-section" id="couple">
+            <canvas class="particle-canvas"></canvas>
+            <div class="container">
+                <div class="photo-wrapper-card">
+                    <div class="photo-frame">
+                        <img src="assets/couple.png" alt="Vishnupriya & Abhiram Portrait" class="couple-photo">
+                    </div>
+                    <h2 class="photo-caption"> Vishnupriya  &  Abhiram </h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Event Details Section -->
+        <section class="details-section" id="details">
+            <div class="container">
+                <h2 class="section-title">The Ceremony Details</h2>
+                <p class="section-subtitle">Please join us as we promise forever</p>
+                
+                <!-- Centerpiece Invitation Box with Parent Names -->
+                <div class="invitation-box-card">
+                    <div class="box-decor">
+                        <i class="fa-solid fa-om"></i>
+                    </div>
+                    <h3 class="box-subtitle">Save The Date</h3>
+                    
+                    <div class="box-names-row">
+                        <!-- Bride Details -->
+                        <div class="box-person-block">
+                            <h4 class="box-person-name">Vishnupriya</h4>
+                            <p class="box-person-parents">D/o Smt. & Sri. Kanuru Vijaya </p>
+                        </div>
+                        
+                        <!-- Interstitial Symbol -->
+                        <div class="box-relationship">with</div>
+                        
+                        <!-- Groom Details -->
+                        <div class="box-person-block">
+                            <h4 class="box-person-name">Abhiram</h4>
+                            <p class="box-person-parents">S/o Smt. & Sri. Mudunuru Sudhakar and Mudunuru  Padma</p>
+                        </div>
+                    </div>
+                    
+                    <p class="box-invitation-message">
+                        We cordially invite you and your family to grace the auspicious occasion of our Engagement Ceremony. Your presence will bless our celebration of love and new beginnings.
+                    </p>
+                </div>
+                
+                <!-- Redesigned Celebration Details Box -->
+                <div class="invitation-box-card details-box-card" style="margin-top: 3rem;">
+                    <div class="box-decor">
+                        <i class="fa-solid fa-ring"></i>
+                    </div>
+                    <h3 class="box-subtitle">Celebration Details</h3>
+                    
+                    <!-- When Block -->
+                    <div class="cinematic-detail-block">
+                        <h4 class="cinematic-detail-title">
+                            <span class="gold-icon">✨</span> When
+                        </h4>
+                        <p class="cinematic-detail-main">
+                            <span class="gold-icon"><i class="fa-regular fa-calendar-days"></i></span> June 26th, 2026
+                        </p>
+                        <p class="cinematic-detail-sub">
+                            <span class="gold-icon"><i class="fa-regular fa-clock"></i></span> 10:30 AM
+                        </p>
+                        <p class="cinematic-detail-sub">
+                            <span class="gold-icon"><i class="fa-solid fa-ring"></i></span> Engagement Ceremony
+                        </p>
+                    </div>
+                    
+                    <!-- Elegant Divider Line -->
+                    <div class="cinematic-divider-line"></div>
+                    
+                    <!-- Where Block -->
+                    <div class="cinematic-detail-block">
+                        <h4 class="cinematic-detail-title">
+                            <span class="gold-icon">📍</span> Where
+                        </h4>
+                        <p class="cinematic-detail-main">Hotel Shubham Celebrations</p>
+                        <p class="cinematic-detail-address">Shapur Nagar Main Rd, Phase 1</p>
+                        <p class="cinematic-detail-address">IDA Jeedimetla, Hyderabad</p>
+                        
+                        <p class="cinematic-helper-text">
+                            <i class="fa-solid fa-circle-info"></i> Scroll below for live directions and venue location
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Countdown Section -->
+        <section class="countdown-section" id="countdown-sec">
+            <div class="container">
+                <h2 class="section-title">Counting Down To Forever</h2>
+                <p class="section-subtitle">Moments until we declare our promises</p>
+                
+                <div class="countdown-wrap" id="countdown" data-target="2026-06-26">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-divider">:</div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-divider">:</div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Mins</span>
+                    </div>
+                    <div class="countdown-divider">:</div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Secs</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Location Map Section -->
+        <section class="map-section" id="map">
+            <div class="container">
+                <h2 class="section-title">The Location</h2>
+                <p class="section-subtitle">Find your way to our celebration</p>
+                
+                <div class="map-wrapper">
+                    <div class="map-inner">
+                        <iframe 
+                            src="https://www.google.com/maps?q=Hotel+Shubham+Celebrations+Jeedimetla+Hyderabad&output=embed"
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Hotel Shubham Celebrations Location Map">
+                        </iframe>
+                    </div>
+                    
+                    <div class="map-overlay-button">
+                        <a 
+                            href="https://www.google.com/maps/dir/?api=1&destination=Hotel+Shubham+Celebrations+Jeedimetla+Hyderabad"
+                            target="_blank"
+                            class="btn-luxury"
+                            rel="noopener noreferrer"
+                        >
+                        <i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i>
+                            Get Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Footer -->
+        <footer class="footer-section">
+            <div class="container">
+                <div class="footer-monogram">V & A</div>
+                <p class="footer-thanks">Thank you for being a part of our beautiful journey.</p>
+                <div class="footer-divider"></div>
+                <p class="footer-copyright">
+                    © 2026 • Vishnupriya & Abhiram Engagement Ceremony • Crafted with Love
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- GSAP for Butter-Smooth Cinematic Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Custom Engine JS -->
+    <script src="js/app.js"></script>
+</body>
+</html>
