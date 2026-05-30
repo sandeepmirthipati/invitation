@@ -58,6 +58,13 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Scroll Lock Helper */
+body.lock-scroll {
+    overflow: hidden !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 5px;
@@ -81,7 +88,8 @@ body {
     pointer-events: none;
     z-index: 9999;
     mix-blend-mode: difference;
-    transition: width 0.2s, height 0.2s;
+    opacity: 0;
+    transition: opacity 0.3s ease, width 0.2s, height 0.2s;
 }
 
 .custom-cursor-glow {
@@ -94,7 +102,8 @@ body {
     pointer-events: none;
     z-index: 9998;
     background: rgba(194, 157, 83, 0.015);
-    transition: transform 0.1s ease-out, width 0.3s, height 0.3s, background-color 0.3s;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.1s ease-out, width 0.3s, height 0.3s, background-color 0.3s;
 }
 
 /* Hover States for Custom Cursor */
@@ -114,7 +123,7 @@ body {
 section {
     padding: 6rem 2rem;
     position: relative;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -160,7 +169,7 @@ section {
 
 /* Cinematic Light Leak Overlay */
 .light-leak {
-    position: absolute;
+    position: fixed;
     width: 80vw;
     height: 80vh;
     border-radius: 50%;
@@ -183,22 +192,30 @@ section {
     z-index: 2;
 }
 
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
 /* 1. Opening Invitation Screen (Dual Panel Split Box) */
 .opening-screen {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     z-index: 1000;
     pointer-events: auto;
     transition: visibility 1.8s;
+    overflow: hidden;
 }
 
 /* Splitting Panels */
 .opening-panel {
-    width: 50vw;
+    width: 50%;
     height: 100vh;
     background: var(--bg-dark-charcoal);
     position: relative;
@@ -333,8 +350,8 @@ section {
 }
 .divine-blessing{
     font-family: var(--font-serif);
-    font-size: 1.5rem;
-    letter-spacing: 3.5px;
+    font-size: 1.8rem;
+    letter-spacing: 3.0px;
     text-transform: uppercase;
     color: var(--color-gold);
     margin-bottom: 1.8rem;
@@ -396,17 +413,32 @@ section {
 
 /* Active State for Opening Screen Split Box */
 .opening-screen.opened .opening-panel.left {
-    transform: translateX(-100vw);
+    transform: translateX(-100%);
 }
 
 .opening-screen.opened .opening-panel.right {
-    transform: translateX(100vw);
+    transform: translateX(100%);
 }
 
 .opening-screen.opened .envelope-container-fixed {
     transform: translate(-50%, -50%) scale(1.12);
     opacity: 0;
     pointer-events: none;
+}
+
+/* Main Content Visibility & Overflow Fixes */
+.invitation-content {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.22, 1);
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.invitation-content.revealed {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Background Music Toggle Button */
@@ -636,8 +668,8 @@ section {
 
 .quote-telugu {
     font-family: var(--font-serif);
-    font-size: 1.9rem;
-    letter-spacing: 3px;
+    font-size: 1.2rem;
+    letter-spacing: 2.5px;
     color: var(--text-dark);
     max-width: 950px;
     margin: 0 auto 1.2rem auto;
@@ -649,11 +681,11 @@ section {
     font-family: var(--font-body);
     font-weight: 300;
     font-style: italic;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--text-muted-dark);
-    max-width: 700px;
+    max-width: 850px;
     margin: 0 auto;
-    letter-spacing: 3px;
+    letter-spacing: 2.5px;
     
 }
 
@@ -1314,7 +1346,9 @@ section {
         width: 92%;
     }
     .couple-name {
-        font-size: 3.6rem;
+        font-size: clamp(2.5rem, 11vw, 4rem);
+        letter-spacing: 2px;
+        line-height: 1.1;
     }
     .ampersand {
         font-size: 3rem;
@@ -1327,19 +1361,62 @@ section {
         font-size: 1.8rem;
     }
     .countdown-wrap {
-        gap: 1.5rem;
+        gap: 1rem;
     }
     .countdown-item {
-        min-width: 100px;
+        min-width: 60px;
     }
     .countdown-number {
-        font-size: 3.5rem;
+        font-size: 2rem;
     }
     .countdown-divider {
         display: none;
     }
     .map-inner {
         height: 350px;
+    }
+    .hero-section {
+        min-height: 100svh;
+        padding-top: 5rem;
+        padding-bottom: 2rem;
+    }
+    .hero-subtitle {
+        letter-spacing: 3px;
+        font-size: 0.7rem;
+    }
+    .hero-date {
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+        margin-bottom: 1.5rem;
+    }
+    .scroll-indicator {
+        bottom: 10px;
+        font-size: 0.5rem;
+        letter-spacing: 3px;
+        gap: 6px;
+    }
+    .scroll-line {
+        height: 32px;
+    }
+    .footer-section {
+        padding: 3rem 1rem 1.5rem;
+    }
+    .footer-monogram {
+        font-size: 1.8rem;
+    }
+    .footer-thanks {
+        font-size: 1rem;
+    }
+    .p10,
+    .p11,
+    .p12,
+    .p13,
+    .p14,
+    .p15,
+    .p16,
+    .p17,
+    .p18 {
+        display: none;
     }
 }
 
@@ -1485,13 +1562,13 @@ section {
 .petal {
     position: absolute;
     top: -10%;
-    width: 12px;
-    height: 18px;
-    background: radial-gradient(circle at 30% 30%, #fff2f9, #a41262);
-    border-radius: 70% 0 70% 0;
-    opacity: 0.5;
-    filter: blur(0.4px);
-    mix-blend-mode: soft-light;
+    width: 14px;
+    height: 20px;
+    background: radial-gradient(circle at 35% 35%, #ffebf3 0%, #e0287d 60%, #80003c 100%);
+    border-radius: 70% 10% 70% 10%;
+    opacity: 0.8;
+    filter: blur(0.3px);
+    box-shadow: 0 2px 6px rgba(128, 0, 60, 0.2);
     animation: cinematic-fall linear infinite;
 }
 
@@ -1587,43 +1664,12 @@ section {
     }
 
     100% {
-        transform: translateY(120vh) translateX(80px) rotate(360deg);
+        transform: translateY(120vh) translateX(25px) rotate(360deg);
         opacity: 0;
     }
 }
 /* Global Cinematic Background */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-        radial-gradient(circle at top left,
-        rgba(194,157,83,0.05),
-        transparent 30%),
 
-        radial-gradient(circle at bottom right,
-        rgba(205,139,119,0.06),
-        transparent 35%);
-        
-    pointer-events: none;
-    z-index: 0;
-}
-/* Hero Cinematic Glow */
-.hero-section::before {
-    content: '';
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle,
-        rgba(194,157,83,0.10),
-        transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    filter: blur(80px);
-    z-index: 1;
-    pointer-events: none;
-}
 
 /* Film Grain Texture */
 body::after {
@@ -1822,79 +1868,10 @@ section {
     line-height: 2rem;
 }
 
-/* Mobile Luxury Optimization */
-@media (max-width: 768px) {
 
-    .hero-section {
-        min-height: 100svh;
-        padding-top: 5rem;
-        padding-bottom: 2rem;
-    }
 
-    .couple-name {
-        font-size: clamp(2.5rem, 11vw, 4rem);
-        letter-spacing: 2px;
-        line-height: 1.1;
-    }
-
-    .hero-subtitle {
-        letter-spacing: 3px;
-        font-size: 0.7rem;
-    }
-
-    .hero-date {
-        font-size: 1.2rem;
-        letter-spacing: 3px;
-        margin-bottom: 1.5rem;
-    }
-
-    .scroll-indicator {
-        bottom: 10px;
-        font-size: 0.5rem;
-        letter-spacing: 3px;
-        gap: 6px;
-    }
-
-    .scroll-line {
-        height: 32px;
-    }
-
-    .countdown-wrap {
-        gap: 1rem;
-    }
-
-    .countdown-item {
-        min-width: 60px;
-    }
-
-    .countdown-number {
-        font-size: 2rem;
-    }
-
-    .footer-section {
-        padding: 3rem 1rem 1.5rem;
-    }
-
-    .footer-monogram {
-        font-size: 1.8rem;
-    }
-
-    .footer-thanks {
-        font-size: 1rem;
-    }
-
-    .p10,
-    .p11,
-    .p12,
-    .p13,
-    .p14,
-    .p15,
-    .p16,
-    .p17,
-    .p18 {
-        display: none;
-    }
+*,
+*::before,
+*::after {
+    max-width: 100%;
 }
-
-/* Ganesha Blessing Styles */
-

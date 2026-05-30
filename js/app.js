@@ -12,26 +12,40 @@ document.addEventListener("DOMContentLoaded", () => {
     let mouseX = 0, mouseY = 0;
     let cursorX = 0, cursorY = 0;
     let glowX = 0, glowY = 0;
+    let hasMoved = false;
 
     // Track mouse movement
     document.addEventListener("mousemove", (e) => {
+        if (!hasMoved) {
+            if (cursor) cursor.style.opacity = "1";
+            if (cursorGlow) cursorGlow.style.opacity = "1";
+            hasMoved = true;
+        }
         mouseX = e.clientX;
         mouseY = e.clientY;
     });
 
     // Animate custom cursor with linear interpolation (lerp) for smooth trailing delay
     function animateCursor() {
+        if (!hasMoved) {
+            requestAnimationFrame(animateCursor);
+            return;
+        }
         // Dot tracking (very fast)
         cursorX += (mouseX - cursorX) * 0.25;
         cursorY += (mouseY - cursorY) * 0.25;
-        cursor.style.left = `${cursorX}px`;
-        cursor.style.top = `${cursorY}px`;
+        if (cursor) {
+            cursor.style.left = `${cursorX}px`;
+            cursor.style.top = `${cursorY}px`;
+        }
 
         // Outer Glow tracking (slower trailing lag)
         glowX += (mouseX - glowX) * 0.08;
         glowY += (mouseY - glowY) * 0.08;
-        cursorGlow.style.left = `${glowX}px`;
-        cursorGlow.style.top = `${glowY}px`;
+        if (cursorGlow) {
+            cursorGlow.style.left = `${glowX}px`;
+            cursorGlow.style.top = `${glowY}px`;
+        }
 
         requestAnimationFrame(animateCursor);
     }
@@ -52,23 +66,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const bgMusic = document.getElementById("bg-music");
     const musicToggleBtn = document.getElementById("music-toggle");
     let isMusicPlaying = false;
+    let fadeInterval = null;
 
     function playMusic() {
         if (bgMusic) {
             bgMusic.volume = 0;
             bgMusic.play().then(() => {
                 isMusicPlaying = true;
-                musicToggleBtn.classList.add("playing");
-                musicToggleBtn.querySelector("i").className = "fa-solid fa-volume-high";
+                if (musicToggleBtn) {
+                    musicToggleBtn.classList.add("playing");
+                    const icon = musicToggleBtn.querySelector("i");
+                    if (icon) icon.className = "fa-solid fa-volume-high";
+                }
                 
                 // Fade in volume smoothly over 2.5 seconds (logarithmic curve simulation)
                 let currentVolume = 0;
-                const fadeInterval = setInterval(() => {
+                if (fadeInterval) clearInterval(fadeInterval);
+                fadeInterval = setInterval(() => {
                     if (currentVolume < 0.45) {
                         currentVolume += 0.015;
                         bgMusic.volume = currentVolume;
                     } else {
                         clearInterval(fadeInterval);
+                        fadeInterval = null;
                     }
                 }, 80);
             }).catch((err) => {
@@ -81,14 +101,24 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!bgMusic) return;
         if (isMusicPlaying) {
             bgMusic.pause();
+            if (fadeInterval) {
+                clearInterval(fadeInterval);
+                fadeInterval = null;
+            }
             isMusicPlaying = false;
-            musicToggleBtn.classList.remove("playing");
-            musicToggleBtn.querySelector("i").className = "fa-solid fa-volume-xmark";
+            if (musicToggleBtn) {
+                musicToggleBtn.classList.remove("playing");
+                const icon = musicToggleBtn.querySelector("i");
+                if (icon) icon.className = "fa-solid fa-volume-xmark";
+            }
         } else {
             bgMusic.play();
             isMusicPlaying = true;
-            musicToggleBtn.classList.add("playing");
-            musicToggleBtn.querySelector("i").className = "fa-solid fa-volume-high";
+            if (musicToggleBtn) {
+                musicToggleBtn.classList.add("playing");
+                const icon = musicToggleBtn.querySelector("i");
+                if (icon) icon.className = "fa-solid fa-volume-high";
+            }
             bgMusic.volume = 0.45;
         }
     }
@@ -105,6 +135,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const openBtn = document.getElementById("open-invitation-btn");
 
     if (openBtn && openingScreen) {
+        // Enforce scroll to top with a slight delay to override browser hashes
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+        }, 10);
+
         openBtn.addEventListener("click", () => {
             // Instant scroll back to top of document (guarantees viewing Hero poster first)
             window.scrollTo({
@@ -120,6 +155,18 @@ document.addEventListener("DOMContentLoaded", () => {
             
             setTimeout(() => {
                 openingScreen.style.display = "none";
+                
+                // Reveal main content container smoothly
+                const content = document.querySelector(".invitation-content");
+                if (content) {
+                    content.classList.add("revealed");
+                }
+                
+                // Unlock body scroll
+                document.body.classList.remove("lock-scroll");
+                
+                // Force a window resize event to trigger canvas elements to recalculate size
+                window.dispatchEvent(new Event('resize'));
                 
                 // Initialize GSAP reveals after opening completes
                 initGSAPAnimations();
@@ -207,7 +254,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const countdownContainer = document.getElementById("countdown");
     if (countdownContainer) {
         const targetDateStr = countdownContainer.getAttribute("data-target"); // YYYY-MM-DD format
-        const targetDate = new Date(`${targetDateStr}T10:30:00`).getTime();
+        
+        // Parse date string robustly (YYYY-MM-DD) to support older iOS Safari and mobile browsers
+        const parts = targetDateStr.split('-');
+        const targetDate = new Date(
+            parseInt(parts[0], 10),
+            parseInt(parts[1], 10) - 1, // 0-indexed month
+            parseInt(parts[2], 10),
+            10, 30, 0 // 10:30 AM Muhuratam
+        ).getTime();
 
         const daysVal = document.getElementById("days");
         const hoursVal = document.getElementById("hours");
